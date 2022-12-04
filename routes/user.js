@@ -21,11 +21,18 @@ router.post('/login-user',async(req,res)=>{
 
 router.post('/save-user',async(req,res)=>{
     console.log("fourth",process.pid,process.ppid);
-    console.log(req.body);
+   // console.log(req.body);
+    let {email}=req.body;
+   // console.log(email);
+    let emailExists=await Users.find({email:`${email}`});
+    console.log(emailExists,"user found");
+    if(emailExists.length){
+        return res.send({'message':'user exists'})
+    }
     let p=new Users(req.body);
     let data=await p.save();
-    console.log(data)
-    res.send({'message':'Success'})
+   // console.log(data)
+    res.send({'message':'success'})
 })
 
   module.exports = router;

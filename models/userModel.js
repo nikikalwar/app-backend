@@ -11,12 +11,12 @@ const userSchema = new mongoose.Schema(
 
     const userSignUpSchema = new mongoose.Schema(
       { 
-      firstName:String,
-      lastName:String,
+      firstName:{type:String,required:true},
+      lastName:{type:String,required:true},
       age:Number,
       phone:Number,  
-      password:{type:String,required:false},
-      email:{type:String,required:false}
+      password:{type:String,required:true},
+      email:{type:String,required:true}
       }
       );
   
